@@ -35,22 +35,6 @@ def automated_url_shortener(url):
 				print key + ' is not taken'
 		hash_dict[path]=key
 
-
-
-
-
-
-
-
-	
-		
-
-	
-	
-
-
-
-
 def main():
 	automated_url_shortener(url)
 	

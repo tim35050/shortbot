@@ -117,6 +117,9 @@ h1:before {
 h1:after {
 	content: '\A--------------------------------------------------';
 }
+a, a:link, a:hover, a:active, a:visited {
+	color: #00CC00;
+}
 #prompt {
 	margin-top: 20px;
 	width: 100%;

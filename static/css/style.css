@@ -100,22 +100,48 @@ body {
 
 #wrapper {
 	padding-top: 20px;
-	width: 600px;
+	width: 80%;
+	min-width: 200px;
 	margin-left: auto;
 	margin-right: auto;
 }
 p {
 	margin-top: 20px;
 }
+header {
+	overflow-x: auto;
+}
 
-h1:before, h1:after{
+header:before, header:after{
 	white-space: pre;
 }
-h1:before {
-	content: '--------------------------------------------------\A';
+header:before {
+	content: '----------------------------------------------------------------------------------------------------\A';
 }
-h1:after {
-	content: '\A--------------------------------------------------';
+header:after {
+	content: '----------------------------------------------------------------------------------------------------';
+}
+#branding {
+	float: left;
+}
+.site-name {
+	text-transform: uppercase;
+}
+ul.navigation {
+	float: right;
+}
+ul.navigation li {
+	display: inline;
+}
+ul.navigation a {
+	text-transform: uppercase;
+	text-decoration: none;
+}
+ul.navigation a.active {
+	text-decoration: underline;
+}
+a, a:link, a:hover, a:active, a:visited {
+	color: #00CC00;
 }
 #prompt {
 	margin-top: 20px;
@@ -135,6 +161,26 @@ h1:after {
 #response {
 	margin-top: 20px;
 }
+.pair {
+	margin-top: 20px;
+}
 input[type=submit] {
 	display: none;
 }
+.profile {
+	height: 100px;
+	margin-top: 20px;
+}
+.profile-pic {
+	float: left;
+	margin-right: 20px;
+}
+.profile-pic img {
+	width: 100px;
+	height: 100px;
+}
+
+.profile-name {
+	text-transform: uppercase;
+}
+

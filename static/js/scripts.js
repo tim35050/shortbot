@@ -7,23 +7,24 @@ var displayRows = 20;
 function elizaReset() {
 	eliza.reset();
 	elizaLines.length = 0;
+	$(".response").html('');
 	elizaStep();
 }
 
-function elizaStep(shortenMessage) {
+function elizaStep(json) {
 	var f = document.forms.e_form;
 	var userinput = f.text_input.value;
-	var botName = 'SHORTBOT'
-	var userName = 'YOU'
-	if (shortenMessage != "") {
-		var usr = userName + ':   ' + userinput;
-		var rpl = botName + ': ' + shortenMessage;
+	var botName = '> SHORTBOT'
+	var userName = '> YOU'
+	if (json != "") {
+		var usr = userName + ':   ' + json.you;
+		var rpl = botName + ': ' + json.shortbot;
 		elizaLines.push(usr);
 		elizaLines.push(rpl);
-		$(".response").html(elizaLines.join('<br />'));
+		writeResponse(usr + '<br />' + rpl);
 	} else {
 		if (eliza.quit) {
-			$(".response").html('');
+			writeResponse('');
 			if (confirm("This session is over.\nStart over?")) elizaReset();
 			f.text_input.focus();
 			return;
@@ -43,26 +44,32 @@ function elizaStep(shortenMessage) {
 				else temp.push(elizaLines[i]);
 			}
 			elizaLines = temp.reverse();
-			$(".response").html(elizaLines.join('<br />'));
+			writeResponse(usr + '<br />' + rpl);
 		}
 		else if (elizaLines.length == 0) {
 			// no input and no saved lines -> output initial
 			var initial = botName + ': ' + eliza.getInitial();
 			elizaLines.push(initial);
-			$(".response").html(initial + '<br />');
+			writeResponse(initial + '<br />')
 		}
 	}
 	f.text_input.value = '';
 	f.text_input.focus();
 }
 
+function writeResponse(msg) {
+	$(".response").html($(".response").html() + '<div class="pair">' + msg + '</div>')
+}
+
 function processInput() {
 	var result = '';
 	input = $('input[name="text_input"]').val()
-	if (input.substring(0,7) == "http://") {
+	if (is_valid_url(input)) {
+		startLoading()
 		$.getJSON('/_process_url', {
 	    	url: input
 	  	}, function(data) {
+	  		stopLoading()
 			elizaStep(data.result);
 	  	});
 	} else {
@@ -70,8 +77,23 @@ function processInput() {
 	}
 }
 
-function validateURL(value) {
+var loadingStatus = false;
 
+var myInterval = 0;
+
+// STARTS and Resets the loop if any
+function startLoading() {
+	document.forms.e_form.text_input.value += " *** Loading";
+    myInterval = setInterval( "addDot()", 500 );  // run
+}
+function stopLoading() {
+	clearInterval(myInterval);
+}
+function addDot() {
+	document.forms.e_form.text_input.value += ".";
+}
+function is_valid_url(url) {
+	return url.match(/^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/);
 }
 
 $("#text_input").keyup(function(event){

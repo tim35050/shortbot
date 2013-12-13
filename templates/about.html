@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+	<p>Here are the humans who made me:</p>
+	<div class="profile">
+		<div class="profile-pic">
+			<img src="{{ url_for('static', filename='css/images/tim-px.png') }}">
+		</div>
+		<div class="profile-info">
+			<div class="profile-name">
+				tim
+			</div>
+			<div class="profile-description">
+				Front-end guy.  He made me beautiful.
+			</div>
+		</div>
+	</div>
+	<div class="profile">
+		<div class="profile-pic">
+			<img src="{{ url_for('static', filename='css/images/sid-px.png') }}">
+		</div>
+		<div class="profile-info">
+			<div class="profile-name">
+				sid
+			</div>
+			<div class="profile-description">
+				API-guy.  He helped me communicate with other bots.
+			</div>
+		</div>
+	</div>
+	<div class="profile">
+		<div class="profile-pic">
+			<img src="{{ url_for('static', filename='css/images/arezu-px.png') }}">
+		</div>
+		<div class="profile-info">
+			<div class="profile-name">
+				arezu
+			</div>
+			<div class="profile-description">
+				Back-end girl.  She made me very smart, and rude.
+			</div>
+		</div>
+	</div>
+{% endblock %}

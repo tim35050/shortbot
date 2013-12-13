@@ -15,7 +15,6 @@ class RequestsSB:
 		#date = {"year":2012,"month":8,"dayOfMonth":14,"hourOfDay":9,"minute":34,"second":21}
 		#params = 'json=' + json.dumps(self.get_get_data_json(careId, key, date))
 		url = urllib.quote(url)
-		print url
 		return self.get(self.getURL + url)
 
 	def get_sb_verify(self, url):

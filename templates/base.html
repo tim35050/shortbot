@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to Shortbot, mortal human</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div id="branding">
+				<span class="site-name">shortbot</span>: <span class="site-description">shorten with an attitude</span>
+			</div>
+			<div id="menu">
+				<ul class="navigation">
+					<li class="nav-item"><a href="{{ url_for('index') }}" {% if request.path == "/" %}class="active"{% endif %}>home</a></li>
+					<li class="nav-item" {% if (request.path == "/about") %}class="active"{% endif %}><a href="{{ url_for('about') }}" {% if request.path == "/about" %}class="active"{% endif %}>about</a></li>
+				</ul>
+			</div>
+		</header>
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.0.3.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/elizabot.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/elizadata.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

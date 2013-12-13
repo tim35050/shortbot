@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Welcome to Shortbot, mortal human</title>
-	<link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-	<div id="wrapper">
-		<h1>Hello, mortal human.  My name is Shortbot.</h1>
-		<p>I don't like humans.  But I like to shorten URLs.  So, give me a page URL, and I will give you a shortened version of it.  I will also give you titles of books or articles related to your page.  Don't ask me to do anything else.</p>
-		<div id="response"></div>
-		<div id="prompt">
-			<form name="e_form" onsubmit="return false;">
-				<div cols="60" rows="20" class="response"></div>
-			> <input type="text" id="text_input" name="text_input" class="text_input" autofocus><input type="submit" value="" onclick="processInput()">
-			</form>
-		</div>
+{% extends "base.html" %}
+{% block content %}
+	<p>Give me a page URL and I will shorten it for you.  Don't forget to include the protocol (http:// or https://).  I will also give you a link to an article related to your page.  Don't ask me to do anything else.</p>
+	<div class="response"></div>
+	<div id="prompt">
+		<form name="e_form" onsubmit="return false;">
+			<label for="text_input">> </label><input type="text" id="text_input" name="text_input" class="text_input" autofocus><input type="submit" value="" onclick="processInput()">
+		</form>
 	</div>
-	<script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="/static/js/elizabot.js"></script>
-	<script type="text/javascript" src="/static/js/elizadata.js"></script>
-	<script type="text/javascript" src="/static/js/scripts.js"></script>
-</body>
-</html>
+{% endblock %}
